@@ -1,0 +1,238 @@
+[
+    {
+        "desc": "Test path command with valid paths, random text and no path. Output should not print any errors. Program exits normally.",
+	"err": "",
+        "id": 1,
+        "input": "path /usr/bin\npath /usr/bin/\npath random/path/\npath\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Test path command with valid paths, random text and no path. Output should not print any errors. Program exits normally.",
+	"err": "",
+        "id": 2,
+        "input": "path /usr/bin\npath /usr/bin/\npath random/path/\npath\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Test cd command with a valid path and an invalid path (empty). Should print 1 error for the invalid path. Program exits normally.",
+	"err": "An error has occurred",
+        "id": 3,
+        "input": "cd test\ncd\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Test cd command with a valid path and an invalid path (empty). Should print 1 error for the invalid path. Program exits normally.",
+	"err": "An error has occurred",
+        "id": 4,
+        "input": "cd test\ncd\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Test exit command with an argument (valid) and then without an argument. Should print 1 error for the invalid call. Program exits normally.",
+	"err": "An error has occurred",
+        "id": 5,
+        "input": "exit 10\nexit\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Test exit command with an argument (valid) and then without an argument. Should print 1 error for the invalid call. Program exits normally.",
+	"err": "An error has occurred",
+        "id": 6,
+        "input": "exit 10\nexit\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Valid ls command. Program should give no errors.",
+	"err": "",
+        "id": 7,
+        "input": "ls test\nexit",
+        "out": "test1\ntest2\ntest3\ntest4",
+        "stdin": true
+    },
+    {
+        "desc": "Invalid ls command. Program should an error.",
+	"err": "ls: cannot access does/not/exist/bad: No such file or directory",
+        "id": 8,
+        "input": "ls does/not/exist/bad\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "code": 1,
+        "desc": "Trying to execute Batch Mode with a file that does not exist. case9.in is to be disregarded since it is not in use. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 9,
+        "input": "__FAKE_FILE__",
+        "out": ""
+    },
+    {
+        "code": 1,
+        "desc": "Trying to execute Batch Mode with multiple files. This should not be allowed as per project requirements. case10.in is to be disregarded since it is not in use. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 10,
+        "input": "__MULTIPLE_FAKE_FILES__",
+        "out": ""
+    },
+    {
+        "desc": "Tests command with variable whitespace.",
+	"err": "",
+        "id": 11,
+        "input": "                    \n                              echo test variable whitespace!           \nexit",
+        "out": "test variable whitespace!",
+        "stdin": true
+    },
+    {
+        "desc": "Tests command with variable whitespace.",
+	"err": "",
+        "id": 12,
+        "input": "                    \n                              echo test variable whitespace!           \nexit",
+        "out": "test variable whitespace!"
+    },
+    {
+        "desc": "Trying to redirect output without specifying the output file in Interactive Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 13,
+        "input": "ls >\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Trying to redirect output without specifying the output file in Batch Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 14,
+        "input": "ls >\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Trying to redirect output with multiple output files in Interactive Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 15,
+        "input": "ls > output1 output2\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Trying to redirect output with multiple output files in Batch Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 16,
+        "input": "ls > output1 output2\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Trying to redirect output with multiple redirection symbols in Interactive Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 17,
+        "input": "ls > output1 > output2\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Trying to redirect output with multiple redirection symbols in Batch Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 18,
+        "input": "ls > output1 > output2\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Normal redirection with ls command in Interactive Mode.",
+	"err": "",
+        "id": 19,
+        "input": "ls test > output\ncat output\nrm -rf output\nexit",
+        "out": "test1\ntest2\ntest3\ntest4",
+        "stdin": true
+    },
+    {
+        "desc": "Normal redirection with ls command in Batch Mode.",
+	"err": "",
+        "id": 20,
+        "input": "ls test > output\ncat output\nrm -rf output\nexit",
+        "out": "test1\ntest2\ntest3\ntest4"
+    },
+    {
+        "desc": "Bad redirection (Nothing to left of redirection symbols '>') in Interactive Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 21,
+        "input": "> output\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Bad redirection (Nothing to left of redirection symbols '>') in Batch Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 22,
+        "input": "> output\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Bad parallel command (Nothing to left of parallel symbol '&') in Interactive Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 23,
+        "input": "& ls\nexit",
+        "out": "",
+        "stdin": true
+    },
+    {
+        "desc": "Bad parallel command (Nothing to left of parallel symbol '&') in Batch Mode. Program should give an error.",
+	"err": "An error has occurred",
+        "id": 24,
+        "input": "& ls\nexit",
+        "out": ""
+    },
+    {
+        "desc": "Normal parallel commands in Interactive Mode.",
+	"err": "",
+        "id": 25,
+        "input": "ls test & echo Hello World!\nexit",
+        "out": "test1\ntest2\ntest3\ntest4\nHello World!",
+        "sort": true,
+        "stdin": true
+    },
+    {
+        "desc": "Normal parallel commands in Batch Mode.",
+	"err": "",
+        "id": 26,
+        "input": "ls test & echo Hello World!\nexit",
+        "out": "test1\ntest2\ntest3\ntest4\nHello World!",
+        "sort": true
+    },
+    {
+        "desc": "Normal redirection with parallel commands with parallel symbol '&' at end in Interactive Mode.",
+	"err": "",
+        "id": 27,
+        "input": "ls test > output &\ncat output\nrm -rf output\nexit",
+        "out": "test1\ntest2\ntest3\ntest4",
+        "stdin": true
+    },
+    {
+        "desc": "Normal redirection with parallel commands with parallel symbol '&' at end in Batch Mode.",
+	"err": "",
+        "id": 28,
+        "input": "ls test > output &\ncat output\nrm -rf output\nexit",
+        "out": "test1\ntest2\ntest3\ntest4"
+    },
+    {
+        "desc": "Normal redirection and parallel commands without spacing between symbols in Interactive Mode.",
+	"err": "",
+        "id": 29,
+        "input": "ls test>output&echo Hello World!\ncat output\nrm -rf output\nexit",
+        "out": "Hello World!\ntest1\ntest2\ntest3\ntest4",
+        "stdin": true
+    },
+    {
+        "desc": "Normal redirection and parallel commands without spacing between symbols in Batch Mode.",
+	"err": "",
+        "id": 30,
+        "input": "ls test>output&echo Hello World!\ncat output\nrm -rf output\nexit",
+        "out": "Hello World!\ntest1\ntest2\ntest3\ntest4"
+    },
+    {
+        "desc": "Long command in Batch Mode",
+	"err": "",
+        "id": 31,
+        "input": "ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output\ncat output\nrm -rf output\necho Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output\ncat output\nrm -rf output\nls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output&ls test>output\ncat output\nrm -rf output\necho Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output&echo Hello World!>output\ncat output\nrm -rf output\nexit",
+        "out": "test1\ntest2\ntest3\ntest4\nHello World!\ntest1\ntest2\ntest3\ntest4\nHello World!"
+    }
+]
